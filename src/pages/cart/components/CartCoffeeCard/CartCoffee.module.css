@@ -1,0 +1,66 @@
+.cartCoffee {
+    display: flex;
+    justify-content: space-between;
+    gap: 3.125rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-button);
+}
+
+.cartCoffee + .cartCoffee {
+    padding-top: 2rem;
+}
+
+.cartCoffee .interactive {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.cartCoffee h3 {
+    color: var(--color-subtitle);
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 130%;
+    grid-column: 1 / 3;
+    margin-bottom: 0.5rem;
+}
+
+.cartCoffee p {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 130%;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.buttons .remove {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.38rem;
+    padding: 0.406rem 0.5rem;
+
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 160%;
+    color: var(--color-text);
+
+    background: var(--color-button);
+
+    cursor: pointer;
+}
+
+.buttons .remove:hover {
+    background: var(--color-hover);
+}
+
+.buttons .remove .icon {
+    color: var(--color-purple);
+}

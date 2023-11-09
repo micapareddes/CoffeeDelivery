@@ -1,0 +1,14 @@
+.label {
+    padding: 0.25rem 0.5rem;
+    border-radius: 6.25rem;
+    background: var(--color-yellow-light);
+
+    text-transform: uppercase;
+    color: var(--color-yellow-dark);
+    align-self: center;
+    display: inline-block;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+}

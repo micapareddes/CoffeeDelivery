@@ -1,0 +1,57 @@
+:root {
+    --color-white: #FFF;
+
+    --color-background: #FAFAFA;
+    --color-card: #F3F2F2;
+    --color-input: #EDEDED;
+    --color-button: #E6E5E5;
+    --color-hover: #D7D5D5;
+    --color-label: #8D8686;
+    --color-text: #574F4D;
+    --color-subtitle: #403937;
+    --color-title: #272221;
+
+    --color-yellow: #DBAC2C;
+    --color-yellow-dark: #C47F17;
+    --color-yellow-light: #F1E9C9;
+    --color-purple: #8047F8;
+    --color-purple-dark: #4B2995;
+    --color-purple-light: #EBE5F9;
+}
+
+:focus{
+    outline: transparent;
+    box-shadow: 0 0 3px 1px var(--color-purple);
+    border-radius: 4px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background: var(--color-background);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 130%
+}
+
+@media(max-width: 375px) {
+    body {
+        font-size: 0.75rem;
+    }
+}

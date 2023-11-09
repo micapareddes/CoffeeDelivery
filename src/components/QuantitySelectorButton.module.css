@@ -1,0 +1,34 @@
+.quantitySelector {
+    background: var(--color-button);
+    padding: 0.5rem;
+    border-radius: 0.38rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+}
+
+.quantitySelector button {
+    color: var(--color-purple);
+    background: var(--color-button);
+    border: none;
+    cursor: pointer;
+}
+
+.quantitySelector button:hover {
+    color: var(--color-purple-dark);
+}
+
+.quantitySelector button:active .icon {
+    transform: scale(0.95);
+}
+
+.quantitySelector button .icon {
+    display: block;
+    margin-left: 2px;
+}
+
+.quantitySelector span {
+    justify-self: center;
+}
