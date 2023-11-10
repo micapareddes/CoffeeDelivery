@@ -31,7 +31,7 @@ export function CartCoffee({
 
   function onSetCartCoffeeQuantity(num: number) {
     setCartCoffeeQuantity(num)
-    alterCartCoffeeQuantity(id, num) // jojo
+    alterCartCoffeeQuantity(id, num)
   }
 
   return (
