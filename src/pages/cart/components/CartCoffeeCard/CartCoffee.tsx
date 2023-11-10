@@ -14,7 +14,16 @@ interface CoffeeData {
 }
 
 export function CartCoffee({ id, image, name, price, quantity }: CoffeeData) {
-  const { deleteCoffeeFromCart } = useContext(CoffeeContext)
+  const { deleteCoffeeFromCart, sumQuantity, subtractQuantity } =
+    useContext(CoffeeContext)
+
+  function handleSumQuantity() {
+    sumQuantity(id)
+  }
+
+  function handleSubtractQuantity() {
+    subtractQuantity(id)
+  }
 
   function handleDeleteCoffeeFromCart(coffeeId: number) {
     deleteCoffeeFromCart(coffeeId)
@@ -29,6 +38,8 @@ export function CartCoffee({ id, image, name, price, quantity }: CoffeeData) {
           <div className={styles.buttons}>
             <QuantitySelectorButton
               quantity={quantity}
+              onSumQuantity={handleSumQuantity}
+              onSubtractQuantity={handleSubtractQuantity}
               style={{ height: '2rem' }}
             />
             <button
