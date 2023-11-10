@@ -29,7 +29,7 @@ const checkoutFormValidationSchema = zod.object({
 type checkoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
-  const shippingPrice = 7.5
+  const shippingPrice = 3.5
   let totalPrice = 0
 
   const adressForm = useForm<checkoutFormData>({
@@ -38,7 +38,7 @@ export function Checkout() {
 
   const { handleSubmit, reset } = adressForm
 
-  const { coffees, coffeeWasAdded } = useContext(CoffeeContext)
+  const { coffeesAddedToCart } = useContext(CoffeeContext)
 
   function handleCheckout(data: checkoutFormData) {
     console.log(data)
@@ -78,25 +78,21 @@ export function Checkout() {
       <section>
         <h2>Cafés selecionados</h2>
         <div className={styles.selectedCoffees}>
-          {coffees.map((coffee) => {
-            if (coffee.isAddedToCart) {
-              totalPrice = totalPrice + coffee.price * coffee.quantity
-              return (
-                <CartCoffee
-                  key={coffee.id}
-                  id={coffee.id}
-                  image={coffee.image}
-                  name={coffee.name}
-                  price={coffee.price}
-                  quantity={coffee.quantity}
-                />
-              )
-            } else {
-              return null
-            }
+          {coffeesAddedToCart.map((coffee) => {
+            totalPrice = totalPrice + coffee.price * coffee.quantity
+            return (
+              <CartCoffee
+                key={coffee.id}
+                id={coffee.id}
+                image={coffee.image}
+                name={coffee.name}
+                price={coffee.price}
+                quantity={coffee.quantity}
+              />
+            )
           })}
           <footer>
-            {coffeeWasAdded ? (
+            {coffeesAddedToCart.length > 0 ? (
               <>
                 <div className={styles.textPrices}>
                   <p>

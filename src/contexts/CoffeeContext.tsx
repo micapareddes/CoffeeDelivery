@@ -9,8 +9,14 @@ interface CoffeeData {
   name: string
   description: string
   price: number
+}
+
+interface CartCoffeeData {
+  id: number
+  image: string
+  name: string
+  price: number
   quantity: number
-  isAddedToCart: boolean
 }
 
 const coffeesArray: CoffeeData[] = [
@@ -21,8 +27,6 @@ const coffeesArray: CoffeeData[] = [
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 10,
-    quantity: 1,
-    isAddedToCart: false,
   },
   {
     id: 1,
@@ -31,8 +35,6 @@ const coffeesArray: CoffeeData[] = [
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     price: 5,
-    quantity: 1,
-    isAddedToCart: false,
   },
   {
     id: 2,
@@ -41,8 +43,6 @@ const coffeesArray: CoffeeData[] = [
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 8,
-    quantity: 1,
-    isAddedToCart: false,
   },
   {
     id: 3,
@@ -51,8 +51,6 @@ const coffeesArray: CoffeeData[] = [
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 7,
-    quantity: 1,
-    isAddedToCart: false,
   },
   {
     id: 4,
@@ -61,20 +59,15 @@ const coffeesArray: CoffeeData[] = [
     name: 'Café com Leite',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 5,
-    quantity: 1,
-    isAddedToCart: false,
   },
 ]
 
 interface CoffeeContextData {
   coffees: CoffeeData[]
-  coffeeWasAdded: boolean
-  addCoffeeToCart: (id: number) => void
+  coffeesAddedToCart: CartCoffeeData[]
+  addCoffeeToCart: (coffee: CartCoffeeData) => void
   deleteCoffeeFromCart: (id: number) => void
-  sumQuantity: (id: number) => void
-  subtractQuantity: (id: number) => void
-  onAddCoffeToCart: () => void
-  onEmptyCart: () => void
+  alterCartCoffeeQuantity: (id: number, newQuantity: number) => void
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextData)
@@ -84,82 +77,41 @@ interface CoffeeContextProviderData {
 }
 
 export function CoffeeContextProvider({ children }: CoffeeContextProviderData) {
-  const [coffeeWasAdded, setCoffeeWasAdded] = useState(false)
-
   const [coffees, setCoffees] = useState<CoffeeData[]>(coffeesArray)
+  const [coffeesAddedToCart, setCoffeesAddedToCart] = useState<
+    CartCoffeeData[]
+  >([])
 
-  function onAddCoffeToCart() {
-    setCoffeeWasAdded(true)
+  function addCoffeeToCart(coffee: CartCoffeeData) {
+    setCoffeesAddedToCart((state) => {
+      return [...state, coffee]
+    })
   }
 
-  function onEmptyCart() {
-    setCoffeeWasAdded(false)
-  }
-
-  function addCoffeeToCart(id: number) {
-    setCoffees((state) =>
-      state.map((coffee) => {
-        if (coffee.id === id) {
-          return { ...coffee, isAddedToCart: true }
+  function alterCartCoffeeQuantity(id: number, newQuantity: number) {
+    setCoffeesAddedToCart((state) =>
+      state.map((cartCoffee) => {
+        if (cartCoffee.id === id) {
+          return { ...cartCoffee, quantity: newQuantity }
         } else {
-          return coffee
+          return cartCoffee
         }
       }),
     )
   }
 
   function deleteCoffeeFromCart(id: number) {
-    setCoffees((state) =>
-      state.map((coffee) => {
-        if (coffee.id === id) {
-          return { ...coffee, isAddedToCart: false }
-        } else {
-          return coffee
-        }
-      }),
-    )
-  }
-
-  function sumQuantity(id: number) {
-    setCoffees((state) =>
-      state.map((coffee) => {
-        if (coffee.id === id) {
-          const newSumQuantity = coffee.quantity + 1
-          return { ...coffee, quantity: newSumQuantity }
-        } else {
-          return coffee
-        }
-      }),
-    )
-  }
-
-  function subtractQuantity(id: number) {
-    setCoffees((state) =>
-      state.map((coffee) => {
-        if (coffee.id === id) {
-          if (coffee.quantity > 1) {
-            const newSumQuantity = coffee.quantity - 1
-            return { ...coffee, quantity: newSumQuantity }
-          }
-          return coffee
-        } else {
-          return coffee
-        }
-      }),
-    )
+    setCoffeesAddedToCart((state) => state.filter((coffee) => coffee.id !== id))
   }
 
   return (
     <CoffeeContext.Provider
       value={{
         coffees,
-        coffeeWasAdded,
+        alterCartCoffeeQuantity,
+        coffeesAddedToCart,
         addCoffeeToCart,
         deleteCoffeeFromCart,
-        sumQuantity,
-        subtractQuantity,
-        onAddCoffeToCart,
-        onEmptyCart,
       }}
     >
       {children}

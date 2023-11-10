@@ -2,7 +2,7 @@ import { QuantitySelectorButton } from '../../../../components/QuantitySelectorB
 import styles from './CoffeeCard.module.css'
 import { CoffeeLabel } from '../CofeeLabel/CoffeeLabel'
 import { ShoppingCart } from '@phosphor-icons/react'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
 interface CoffeeProps {
@@ -12,7 +12,6 @@ interface CoffeeProps {
   name: string
   description: string
   price: number
-  quantity: number
 }
 
 export function CoffeeCard({
@@ -22,22 +21,23 @@ export function CoffeeCard({
   name,
   description,
   price,
-  quantity,
 }: CoffeeProps) {
-  const { addCoffeeToCart, sumQuantity, subtractQuantity, onAddCoffeToCart } =
-    useContext(CoffeeContext)
+  const { addCoffeeToCart } = useContext(CoffeeContext)
 
-  function handleSumQuantity() {
-    sumQuantity(id)
-  }
+  const [quantity, setQuantity] = useState(1)
 
-  function handleSubtractQuantity() {
-    subtractQuantity(id)
+  function onSetQuantity(num: number) {
+    setQuantity(num)
   }
 
   function handleAddCoffeeToCart() {
-    addCoffeeToCart(id)
-    onAddCoffeToCart()
+    addCoffeeToCart({
+      id,
+      image,
+      name,
+      price,
+      quantity,
+    })
   }
 
   return (
@@ -61,8 +61,7 @@ export function CoffeeCard({
           <div className={styles.action}>
             <QuantitySelectorButton
               quantity={quantity}
-              onSumQuantity={handleSumQuantity}
-              onSubtractQuantity={handleSubtractQuantity}
+              onSetQuantity={onSetQuantity}
             />
             <button className={styles.cart} onClick={handleAddCoffeeToCart}>
               <ShoppingCart weight="fill" className={styles.icon} />
