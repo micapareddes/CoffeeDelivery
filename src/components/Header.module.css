@@ -30,19 +30,6 @@
     color: var(--color-purple-dark);
 }
 
-.menuWraper button {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.38rem;
-    background: var(--color-yellow-light);
-    cursor: pointer;
-    align-items: center;
-}
-
-button .cartIcon {
-    color: var(--color-yellow-dark);
-    display: block;
-}
 
 @media(max-width: 930px) {
     .header {

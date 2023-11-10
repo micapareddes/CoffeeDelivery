@@ -26,7 +26,7 @@ const coffeesArray: CoffeeData[] = [
     labels: ['tradicional'],
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
-    price: 10,
+    price: 350,
   },
   {
     id: 1,
@@ -34,7 +34,7 @@ const coffeesArray: CoffeeData[] = [
     labels: ['tradicional'],
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
-    price: 5,
+    price: 300,
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const coffeesArray: CoffeeData[] = [
     labels: ['tradicional'],
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
-    price: 8,
+    price: 400,
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const coffeesArray: CoffeeData[] = [
     labels: ['tradicional', 'gelado'],
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
-    price: 7,
+    price: 350,
   },
   {
     id: 4,
@@ -58,7 +58,7 @@ const coffeesArray: CoffeeData[] = [
     labels: ['tradicional', 'com leite'],
     name: 'Café com Leite',
     description: 'Bebida preparada com café expresso e cubos de gelo',
-    price: 5,
+    price: 525,
   },
 ]
 
