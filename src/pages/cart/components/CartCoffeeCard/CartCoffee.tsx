@@ -1,11 +1,11 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { QuantitySelectorButton } from '../../../../components/QuantitySelectorButton'
 
 import styles from './CartCoffee.module.css'
 import { Trash } from '@phosphor-icons/react'
 import { CoffeeContext } from '../../../../contexts/CoffeeContext'
 
-interface CoffeeData {
+interface CartCoffeeData {
   id: number
   image: string
   name: string
@@ -13,20 +13,25 @@ interface CoffeeData {
   quantity: number
 }
 
-export function CartCoffee({ id, image, name, price, quantity }: CoffeeData) {
-  const { deleteCoffeeFromCart, sumQuantity, subtractQuantity } =
+export function CartCoffee({
+  id,
+  image,
+  name,
+  price,
+  quantity,
+}: CartCoffeeData) {
+  const { deleteCoffeeFromCart, alterCartCoffeeQuantity } =
     useContext(CoffeeContext)
 
-  function handleSumQuantity() {
-    sumQuantity(id)
+  function handleDeleteCoffeeFromCart() {
+    deleteCoffeeFromCart(id)
   }
 
-  function handleSubtractQuantity() {
-    subtractQuantity(id)
-  }
+  const [cartCoffeeQuantity, setCartCoffeeQuantity] = useState(quantity)
 
-  function handleDeleteCoffeeFromCart(coffeeId: number) {
-    deleteCoffeeFromCart(coffeeId)
+  function onSetCartCoffeeQuantity(num: number) {
+    setCartCoffeeQuantity(num)
+    alterCartCoffeeQuantity(id, num)
   }
 
   return (
@@ -37,14 +42,13 @@ export function CartCoffee({ id, image, name, price, quantity }: CoffeeData) {
           <h3>{name}</h3>
           <div className={styles.buttons}>
             <QuantitySelectorButton
-              quantity={quantity}
-              onSumQuantity={handleSumQuantity}
-              onSubtractQuantity={handleSubtractQuantity}
+              quantity={cartCoffeeQuantity}
+              onSetQuantity={onSetCartCoffeeQuantity}
               style={{ height: '2rem' }}
             />
             <button
               className={styles.remove}
-              onClick={() => handleDeleteCoffeeFromCart(id)}
+              onClick={handleDeleteCoffeeFromCart}
             >
               <Trash size={16} className={styles.icon} />
               Remover

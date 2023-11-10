@@ -6,23 +6,31 @@ import { HtmlHTMLAttributes } from 'react'
 interface QuantitySelectorButtonProps
   extends HtmlHTMLAttributes<HTMLDivElement> {
   quantity: number
-  onSubtractQuantity?: () => void
-  onSumQuantity?: () => void
+  onSetQuantity: (num: number) => void
 }
 
 export function QuantitySelectorButton({
   quantity,
-  onSubtractQuantity,
-  onSumQuantity,
+  onSetQuantity,
   ...rest
 }: QuantitySelectorButtonProps) {
+  function handleSumQuantity() {
+    onSetQuantity(quantity + 1)
+  }
+
+  function handleSubtractQuantity() {
+    if (quantity > 1) {
+      onSetQuantity(quantity - 1)
+    }
+  }
+
   return (
     <div className={styles.quantitySelector} {...rest}>
-      <button onClick={onSubtractQuantity}>
+      <button onClick={handleSubtractQuantity}>
         <Minus size={14} weight="bold" className={styles.icon} />
       </button>
       <span>{quantity}</span>
-      <button onClick={onSumQuantity}>
+      <button onClick={handleSumQuantity}>
         <Plus size={14} weight="bold" className={styles.icon} />
       </button>
     </div>
