@@ -20,7 +20,7 @@ export function CartCoffee({
   price,
   quantity,
 }: CartCoffeeData) {
-  const { deleteCoffeeFromCart, alterCartCoffeeQuantity } =
+  const { deleteCoffeeFromCart, alterCartCoffeeQuantity, formatPrice } =
     useContext(CoffeeContext)
 
   function handleDeleteCoffeeFromCart() {
@@ -56,7 +56,7 @@ export function CartCoffee({
           </div>
         </div>
       </div>
-      <p>R${price}</p>
+      <p>R${formatPrice(price)}</p>
     </div>
   )
 }

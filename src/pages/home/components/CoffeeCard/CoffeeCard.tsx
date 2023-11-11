@@ -22,7 +22,7 @@ export function CoffeeCard({
   description,
   price,
 }: CoffeeProps) {
-  const { addCoffeeToCart } = useContext(CoffeeContext)
+  const { addCoffeeToCart, formatPrice } = useContext(CoffeeContext)
 
   const [quantity, setQuantity] = useState(1)
 
@@ -55,8 +55,8 @@ export function CoffeeCard({
         </header>
         <footer>
           <p className={styles.price}>
-            <span>R$</span>
-            {price}
+            <span>R$ </span>
+            {formatPrice(price)}
           </p>
           <div className={styles.action}>
             <QuantitySelectorButton

@@ -29,7 +29,7 @@ const checkoutFormValidationSchema = zod.object({
 type checkoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
-  const shippingPrice = 3.5
+  const shippingPrice = 350
   let totalPrice = 0
 
   const adressForm = useForm<checkoutFormData>({
@@ -38,7 +38,7 @@ export function Checkout() {
 
   const { handleSubmit, reset } = adressForm
 
-  const { coffeesAddedToCart } = useContext(CoffeeContext)
+  const { coffeesAddedToCart, formatPrice } = useContext(CoffeeContext)
 
   function handleCheckout(data: checkoutFormData) {
     console.log(data)
@@ -96,14 +96,15 @@ export function Checkout() {
               <>
                 <div className={styles.textPrices}>
                   <p>
-                    Total de itens <span>R$ {totalPrice}</span>
+                    Total de itens <span>R$ {formatPrice(totalPrice)}</span>
                   </p>
                   <p>
-                    Entrega <span>R$ {shippingPrice}</span>
+                    Entrega <span>R$ {formatPrice(shippingPrice)}</span>
                   </p>
                   <strong>
                     <p>
-                      Total <span>R$ {totalPrice + shippingPrice}</span>
+                      Total{' '}
+                      <span>R$ {formatPrice(totalPrice + shippingPrice)}</span>
                     </p>
                   </strong>
                 </div>
