@@ -68,6 +68,7 @@ interface CoffeeContextData {
   addCoffeeToCart: (coffee: CartCoffeeData) => void
   deleteCoffeeFromCart: (id: number) => void
   alterCartCoffeeQuantity: (id: number, newQuantity: number) => void
+  formatPrice: (cents: number) => string
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextData)
@@ -81,6 +82,16 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderData) {
   const [coffeesAddedToCart, setCoffeesAddedToCart] = useState<
     CartCoffeeData[]
   >([])
+
+  function formatPrice(cents: number) {
+    const reais = cents / 100
+    const formatted = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+    }).format(reais)
+    return formatted.replace(/R\$\s?/, '')
+  }
 
   function addCoffeeToCart(coffee: CartCoffeeData) {
     setCoffeesAddedToCart((state) => {
@@ -112,6 +123,7 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderData) {
         coffeesAddedToCart,
         addCoffeeToCart,
         deleteCoffeeFromCart,
+        formatPrice,
       }}
     >
       {children}
