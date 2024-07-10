@@ -1,4 +1,8 @@
+![Coffee Delivery Capa](/src/assets/logo.svg)
+
 # Coffee Delivery
+
+![Coffee Delivery Capa](/src/assets/capa.png)
 
 ## Índice
 
@@ -29,9 +33,10 @@ O **CoffeeDelivery** é um projeto de entrega de café, desenvolvido para facili
 - Conclusão do pedido (em desenvolvimento)
 - Redirecionamento para página de confirmação de pedido (em desenvolvimento)
 
-
 ## Status do Projeto
+
 O projeto está atualmente pausado. As funcionalidades de conclusão do pedido, validações de formulário e redirecionamento para a página de confirmação de pedido ainda estão em desenvolvimento. Devido ao cronograma seguido durante o estágio, o projeto foi temporariamente interrompido, mas será retomado e concluído em breve.
 
 ## Melhorias Futuras
+
 Integração com uma API personalizada para fornecer os dados dos cafés. Esta API será desenvolvida especialmente para o projeto, garantindo a qualidade e a consistência das informações dos produtos.
