@@ -38,7 +38,8 @@ O projeto está atualmente pausado. As funcionalidades de conclusão do pedido, 
 
 ## Melhorias Futuras
 
-Integração com uma API personalizada para fornecer os dados dos cafés. Esta API será desenvolvida especialmente para o projeto, garantindo a qualidade e a consistência das informações dos produtos.
+- Integração com uma API personalizada para fornecer os dados dos cafés. Esta API será desenvolvida especialmente para o projeto, garantindo a qualidade e a consistência das informações dos produtos.
+- Implementação de design responsivo. Atualmente, o layout não é responsivo, mas será adaptado para dispositivos móveis e diferentes resoluções em breve.
 
 ## Acesso
 
