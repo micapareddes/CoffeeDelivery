@@ -2,7 +2,7 @@
 
 # Coffee Delivery
 
-![Coffee Delivery Capa](/src/assets/capa.png)
+![Coffee Delivery Capa](/src/assets/capa.svg)
 
 ## Índice
 
