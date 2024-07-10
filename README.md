@@ -9,6 +9,7 @@
 - [Funcionalidades](#funcionalidades)
 - [Status do Projeto](#status-do-projeto)
 - [Melhorias Futuras](#melhorias-futuras)
+- [Acesso ao site](#acesso)
 
 ## Sobre
 
@@ -38,3 +39,7 @@ O projeto está atualmente pausado. As funcionalidades de conclusão do pedido, 
 ## Melhorias Futuras
 
 Integração com uma API personalizada para fornecer os dados dos cafés. Esta API será desenvolvida especialmente para o projeto, garantindo a qualidade e a consistência das informações dos produtos.
+
+## Acesso
+
+[Veja o site no ar aqui!](https://coffee-delivery-mica.vercel.app/)
