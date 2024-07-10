@@ -78,7 +78,8 @@ interface CoffeeContextProviderData {
 }
 
 export function CoffeeContextProvider({ children }: CoffeeContextProviderData) {
-  const [coffees, setCoffees] = useState<CoffeeData[]>(coffeesArray)
+  // const [coffees, setCoffees] = useState<CoffeeData[]>(coffeesArray)
+  const [coffees] = useState<CoffeeData[]>(coffeesArray)
   const [coffeesAddedToCart, setCoffeesAddedToCart] = useState<
     CartCoffeeData[]
   >([])
