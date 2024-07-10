@@ -1,7 +1,5 @@
-<div style="display: flex; align-items: center;">
-  <img src="./src/assets/logo.svg" alt="Coffee Delivery Capa" style="margin-right: 20px;" />
-  <h1>Coffee Delivery</h1>
-</div>
+# Coffee Delivery
+
 ![Coffee Delivery Capa](/src/assets/capa.svg)
 
 ## Índice
